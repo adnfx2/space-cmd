@@ -1,44 +1,37 @@
-import {useState, useContext} from "react";
-import {useNavigate} from "react-router-dom";
+import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 import styles from "./Spacecraft.module.css";
-import {LoadingContext} from "../../context/LoadingProvider.jsx";
+import { LoadingContext } from "../../context/LoadingProvider.jsx";
 import SpaceTravelApi from "../../services/SpaceTravelApi.js";
 
-function SpacecraftBuild ()
-{
+function SpacecraftBuild() {
   const INITIAL_SPACECRAFT = {
     name: "",
     capacity: "",
     description: "",
-    pictureUrl: ""
+    pictureUrl: "",
   };
   const [spacecraft, setSpacecraft] = useState(INITIAL_SPACECRAFT);
   const [errors, setErrors] = useState([]);
   const navigate = useNavigate();
-  const {enableLoading, disableLoading} = useContext(LoadingContext);
+  const { enableLoading, disableLoading } = useContext(LoadingContext);
 
-  function handleChangeOfFormInput (event)
-  {
+  function handleChangeOfFormInput(event) {
     // todo update form state
   }
 
-  async function handleSubmitOfForm (event)
-  {
+  async function handleSubmitOfForm(event) {
     // todo submit the form using the API
   }
 
-  function handleClickOfBack (event)
-  {
+  function handleClickOfBack(event) {
     // todo navigate back
   }
 
   return (
     <>
-      <button
-        className={styles["button__back"]}
-        onClick={handleClickOfBack}
-      >
+      <button className={styles["button__back"]} onClick={handleClickOfBack}>
         Back 👈
       </button>
       <div>
@@ -90,19 +83,15 @@ function SpacecraftBuild ()
 
             <div className={styles["submitContainer"]}>
               <div className={styles["errorContainer"]}>
-                {
-                  errors.map((error, index) => <div
-                    key={index}
-                    className={styles["error"]}
-                  >{error}</div>)
-                }
+                {errors.map((error, index) => (
+                  <div key={index} className={styles["error"]}>
+                    {error}
+                  </div>
+                ))}
               </div>
 
               <div className={styles["button__submit"]}>
-                <button
-                  type="submit"
-                  onClick={handleSubmitOfForm}
-                >
+                <button type="submit" onClick={handleSubmitOfForm}>
                   Build 🏗️
                 </button>
               </div>
