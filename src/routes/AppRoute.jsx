@@ -1,6 +1,6 @@
 import { Routes, Route, Navigate } from "react-router";
 
-// import Home from "../pages/Home/Home";
+import Home from "../pages/Home/Home";
 // import Spacecrafts from "../pages/Spacecrafts/Spacecrafts.jsx";
 // import SpacecraftBuild from "../pages/SpacecraftBuild/SpacecraftBuild.jsx";
 // import Spacecraft from "../pages/Spacecraft/Spacecraft.jsx";
@@ -9,7 +9,7 @@ import { Routes, Route, Navigate } from "react-router";
 function AppRoute() {
   return (
     <Routes>
-      <Route path={"/"} element={<div>home</div>} />
+      <Route path={"/"} element={<Home />} />
       <Route path={"/spacecraft"}>
         <Route index element={<div>spacecraft</div>} />
         <Route path={":id"} element={<div>spacecraft-ITEM</div>} />

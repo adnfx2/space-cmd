@@ -1,0 +1,18 @@
+.home h1 {
+  text-align: center;
+  margin-bottom: 2em;
+}
+
+.h-box {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.h-box > h2 {
+  margin: 1em 0;
+}
+
+.h-box > p {
+  border: 1px dotted whitesmoke;
+  padding: 1em;
+}

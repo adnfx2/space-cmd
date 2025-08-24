@@ -5,7 +5,7 @@ import styles from "./App.module.css";
 import { LoadingContext } from "./context/LoadingProvider.jsx";
 import NavigationBar from "./components/NavigationBar/NavigationBar.jsx";
 import AppRoute from "./routes/AppRoute.jsx";
-// import Motto from "./components/Motto/Motto.jsx";
+import Motto from "./components/Motto/Motto.jsx";
 // import Loading from "./components/Loading/Loading.jsx";
 
 import SpaceTravelApi from "./services/SpaceTravelApi.js";
@@ -26,7 +26,9 @@ function App() {
               <AppRoute />
             </main>
 
-            <footer className={styles["app__footer"]}>todo</footer>
+            <footer className={styles["app__footer"]}>
+              <Motto />
+            </footer>
           </div>
         </BrowserRouter>
       }
