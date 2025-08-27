@@ -3,7 +3,7 @@ import { Routes, Route, Navigate } from "react-router";
 import Home from "../pages/Home/Home";
 import Spacecrafts from "../pages/Spacecrafts/Spacecrafts.jsx";
 import SpacecraftBuild from "../pages/SpacecraftBuild/SpacecraftBuild.jsx";
-// import Spacecraft from "../pages/Spacecraft/Spacecraft.jsx";
+import Spacecraft from "../pages/Spacecraft/Spacecraft.jsx";
 // import Planets from "../pages/Planets/Planets.jsx";
 
 function AppRoute() {
@@ -12,7 +12,7 @@ function AppRoute() {
       <Route path={"/"} element={<Home />} />
       <Route path={"/spacecraft"}>
         <Route index element={<Spacecrafts />} />
-        <Route path={":id"} element={<div>spacecraft-ITEM</div>} />
+        <Route path={":id"} element={<Spacecraft />} />
         <Route path={"build"} element={<SpacecraftBuild />} />
       </Route>
       <Route path={"/planets"} element={<div>planets</div>} />

@@ -10,8 +10,12 @@ function Spacecrafts() {
   const { enableLoading, disableLoading } = useContext(LoadingContext);
 
   async function getSpacecrafts() {
-    const response = await SpaceTravelApi.getSpacecrafts();
-    setSpacecrafts(response.data);
+    const { error, data } = await SpaceTravelApi.getSpacecrafts();
+    if (error) {
+      console.error("api failed", error);
+    } else {
+      setSpacecrafts(data);
+    }
   }
 
   useEffect(() => {
@@ -24,6 +28,7 @@ function Spacecrafts() {
     runGetSpacecrafts();
   }, [enableLoading, disableLoading]);
 
+  console.log(spacecrafts);
   const navigate = useNavigate();
 
   function handleClickOfBuild() {

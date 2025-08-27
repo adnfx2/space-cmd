@@ -1,53 +1,47 @@
-.spacecraft
-{
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+.spacecraft__container {
+  width: 80%;
+  margin: 0 auto;
 }
 
-.spacecraft__imageContainer
-{
+.spacecraft__grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-areas:
+    "img img img img"
+    "name name info info"
+    "cap cap info info";
+  justify-content: space-evenly;
+}
+.spacecraft__img {
+  grid-area: img;
+  place-self: center;
+}
+.spacecraft__name {
+  grid-area: name;
+}
+.spacecraft__cap {
+  grid-area: cap;
+}
+.spacecraft__info {
+  grid-area: info;
+  text-align: justify;
+}
+
+.spacecraft__imageContainer {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 12rem;
   height: 12rem;
-  margin-bottom: 6rem;
+  margin: 3rem 0;
   cursor: pointer;
   border: 2px dotted #ffffff;
 }
-
-.spacecraft__image
-{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.spacecraft__image--default
-{
+.spacecraft__imageContainer > span {
   font-size: 4.8rem;
 }
-
-.spacecraft__infoContainer
-{
-  display: flex;
+.spacecraft__imageContainer > img {
   width: 100%;
-}
-
-.spacecraft__info
-{
-  font-size: 1.2rem;
-  width: 50%;
-}
-
-.spacecraft__infoHeader
-{
-  margin-bottom: 2rem;
-}
-
-.spacecraft__infoText
-{
-  font-size: 1rem;
-  text-align: justify;
+  padding: 10px;
 }

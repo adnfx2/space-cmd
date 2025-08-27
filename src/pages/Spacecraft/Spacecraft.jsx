@@ -1,106 +1,69 @@
-import { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect, useContext } from "react";
+import { LoadingContext } from "../../context/LoadingProvider.jsx";
+import { useParams, useNavigate } from "react-router";
 
 import styles from "./Spacecraft.module.css";
-import { LoadingContext } from "../../context/LoadingProvider.jsx";
 import SpaceTravelApi from "../../services/SpaceTravelApi.js";
 
-function SpacecraftBuild() {
-  const INITIAL_SPACECRAFT = {
-    name: "",
-    capacity: "",
-    description: "",
-    pictureUrl: "",
-  };
-  const [spacecraft, setSpacecraft] = useState(INITIAL_SPACECRAFT);
-  const [errors, setErrors] = useState([]);
-  const navigate = useNavigate();
+function Spacecraft() {
+  const [spacecraft, setSpacecraft] = useState();
   const { enableLoading, disableLoading } = useContext(LoadingContext);
+  const { id } = useParams();
+  const navigate = useNavigate();
 
-  function handleChangeOfFormInput(event) {
-    // todo update form state
-  }
+  console.log({ spacecraft });
 
-  async function handleSubmitOfForm(event) {
-    // todo submit the form using the API
-  }
-
-  function handleClickOfBack(event) {
-    // todo navigate back
-  }
+  useEffect(() => {
+    async function getSpacecraft() {
+      enableLoading();
+      const { error, data } = await SpaceTravelApi.getSpacecraftById({ id });
+      if (error) {
+        console.error(`api getSpacecraftById(${id}) failed`, error);
+      } else {
+        setSpacecraft(data);
+      }
+      disableLoading();
+    }
+    getSpacecraft();
+  }, [enableLoading, disableLoading, id]);
 
   return (
-    <>
-      <button className={styles["button__back"]} onClick={handleClickOfBack}>
+    <div className={styles.spacecraft__container}>
+      <button
+        className={styles["button__back"]}
+        onClick={() => {
+          navigate(-1);
+        }}
+      >
         Back 👈
       </button>
-      <div>
-        <form onSubmit={handleSubmitOfForm}>
-          <div className={styles["form"]}>
-            <div className={styles["form__inputs"]}>
-              <div className={styles["form__inputContainer"]}>
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Name"
-                  value={spacecraft.name}
-                  onChange={handleChangeOfFormInput}
-                  autoComplete="off"
-                />
+      <ul className={styles.spacecraft__grid}>
+        {spacecraft ? (
+          <>
+            <li className={styles.spacecraft__img}>
+              <div className={styles.spacecraft__imageContainer}>
+                {spacecraft.pictureUrl ? (
+                  <img src={spacecraft.pictureUrl} alt={spacecraft.name} />
+                ) : (
+                  <span>🚀</span>
+                )}
               </div>
-
-              <div className={styles["form__inputContainer"]}>
-                <input
-                  type="text"
-                  name="capacity"
-                  placeholder="Capacity"
-                  value={spacecraft.capacity}
-                  onChange={handleChangeOfFormInput}
-                  autoComplete="off"
-                />
-              </div>
-
-              <div className={styles["form__inputContainer"]}>
-                <textarea
-                  name="description"
-                  placeholder="Description"
-                  value={spacecraft.description}
-                  onChange={handleChangeOfFormInput}
-                />
-              </div>
-
-              <div className={styles["form__inputContainer"]}>
-                <input
-                  type="text"
-                  name="pictureUrl"
-                  placeholder="Picture URL"
-                  value={spacecraft.pictureUrl}
-                  onChange={handleChangeOfFormInput}
-                  autoComplete="off"
-                />
-              </div>
-            </div>
-
-            <div className={styles["submitContainer"]}>
-              <div className={styles["errorContainer"]}>
-                {errors.map((error, index) => (
-                  <div key={index} className={styles["error"]}>
-                    {error}
-                  </div>
-                ))}
-              </div>
-
-              <div className={styles["button__submit"]}>
-                <button type="submit" onClick={handleSubmitOfForm}>
-                  Build 🏗️
-                </button>
-              </div>
-            </div>
-          </div>
-        </form>
-      </div>
-    </>
+            </li>
+            <li className={styles.spacecraft__name}>Name: {spacecraft.name}</li>
+            <li className={styles.spacecraft__cap}>
+              Capacity: {spacecraft.capacity}
+            </li>
+            <li className={styles.spacecraft__info}>
+              <div> Description:</div>
+              <br /> {spacecraft.description}
+            </li>
+          </>
+        ) : (
+          ""
+        )}
+      </ul>
+    </div>
   );
 }
 
-export default SpacecraftBuild;
+export default Spacecraft;
