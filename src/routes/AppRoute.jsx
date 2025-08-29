@@ -4,7 +4,7 @@ import Home from "../pages/Home/Home";
 import Spacecrafts from "../pages/Spacecrafts/Spacecrafts.jsx";
 import SpacecraftBuild from "../pages/SpacecraftBuild/SpacecraftBuild.jsx";
 import Spacecraft from "../pages/Spacecraft/Spacecraft.jsx";
-// import Planets from "../pages/Planets/Planets.jsx";
+import Planets from "../pages/Planets/Planets.jsx";
 
 function AppRoute() {
   return (
@@ -15,7 +15,7 @@ function AppRoute() {
         <Route path={":id"} element={<Spacecraft />} />
         <Route path={"build"} element={<SpacecraftBuild />} />
       </Route>
-      <Route path={"/planets"} element={<div>planets</div>} />
+      <Route path={"/planets"} element={<Planets />} />
       <Route path="*" element={<div>Not found</div>} />
     </Routes>
   );

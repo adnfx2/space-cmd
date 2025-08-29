@@ -72,8 +72,26 @@ class SpaceTravelMockApi {
         pictureUrl: null,
         currentLocation: 2,
       },
+      {
+        id: "starbreaker",
+        name: "Starbreaker",
+        capacity: 20000,
+        description:
+          "The Starbreaker is a sleek, high-performance interstellar vessel engineered for deep-space reconnaissance and tactical disruption. Powered by a dual-core quantum drive, it can breach gravitational fields and navigate hostile sectors with precision. Its hull is layered with adaptive shielding, allowing it to absorb and redirect energy attacks. Designed for stealth and speed, the Starbreaker carries a crew of six and features modular AI-assisted navigation. Its signature maneuver—“the burn arc”—lets it slip past enemy scanners undetected. Whether scouting unknown systems or intercepting rogue transmissions, the Starbreaker is a symbol of agility, resilience, and technological mastery in the void",
+        pictureUrl: "https://pixyship.com/sprites/8522.png",
+        currentLocation: 2,
+      },
+      {
+        id: "Dusting",
+        name: "Dusting",
+        capacity: 1000,
+        description: "War spacecraft meant to switfly attack",
+        pictureUrl: "https://pixyship.com/sprites/7893.png",
+        currentLocation: 2,
+      },
     ],
   };
+
   static MOCK_DB_KEY = "MOCK_DB";
 
   static prepareResponse() {
