@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { BrowserRouter } from "react-router";
+import { HashRouter } from "react-router";
 
 import styles from "./App.module.css";
 import { LoadingContext } from "./context/LoadingProvider.jsx";
@@ -13,7 +13,7 @@ function App() {
 
   return (
     <>
-      <BrowserRouter basename="/space-cmd">
+      <HashRouter>
         <div className={styles["app"]}>
           <header className={styles["app__header"]}>
             <NavigationBar />
@@ -27,7 +27,7 @@ function App() {
             <Motto />
           </footer>
         </div>
-      </BrowserRouter>
+      </HashRouter>
       {isLoading ? <Loading /> : ""}
     </>
   );
