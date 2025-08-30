@@ -3,6 +3,6 @@ import react from '@vitejs/plugin-react'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: 'space-cmd',
+  base: '/space-cmd/',
   plugins: [react()],
 })
