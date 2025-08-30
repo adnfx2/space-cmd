@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from "react";
+import { useContext } from "react";
 import { BrowserRouter } from "react-router";
 
 import styles from "./App.module.css";
@@ -8,14 +8,12 @@ import AppRoute from "./routes/AppRoute.jsx";
 import Motto from "./components/Motto/Motto.jsx";
 import Loading from "./components/Loading/Loading.jsx";
 
-import SpaceTravelApi from "./services/SpaceTravelApi.js";
-
 function App() {
   const { isLoading } = useContext(LoadingContext);
 
   return (
     <>
-      <BrowserRouter>
+      <BrowserRouter basename="/space-cmd">
         <div className={styles["app"]}>
           <header className={styles["app__header"]}>
             <NavigationBar />
